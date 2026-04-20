@@ -2,39 +2,30 @@
 <html>
 
 <head>
-    <title>My Portfolio</title>
+    <title>To-Do List</title>
 
     <style>
         body {
-            margin: 0;
             font-family: Arial;
-            background-color: #f4f4f4;
             text-align: center;
+            background: #f4f4f4;
         }
 
-        header {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-        }
-
-        section {
-            padding: 20px;
-        }
-
-        .box {
-            background: white;
-            margin: 20px;
-            padding: 20px;
-            border-radius: 10px;
+        input {
+            padding: 10px;
+            width: 200px;
         }
 
         button {
-            padding: 10px 20px;
-            background: blue;
-            color: white;
-            border: none;
-            border-radius: 5px;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        li {
+            background: white;
+            margin: 10px;
+            padding: 10px;
+            list-style: none;
         }
     </style>
 
@@ -42,68 +33,36 @@
 
 <body>
 
-    <header>
-        <h1>Prajwal</h1>
-        <p>Beginner Web Developer 🚀</p>
-    </header>
+    <h1>My To-Do List</h1>
 
-    <section>
-        <div class="box">
-            <h2>About Me</h2>
-            <p>Mera naam Prajwal hai. Main web development seekh raha hoon.</p>
-        </div>
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button onclick="addTask()">Add</button>
 
-        <div class="box">
-            <h2>Skills</h2>
-            <p>HTML, CSS (learning...)</p>
-        </div>
+    <ul id="taskList"></ul>
 
-        <div class="box">
-           
-            <h2>Contact</h2>
+    <script>
+        function addTask() {
+            let input = document.getElementById("taskInput");
+            let task = input.value;
 
-<a href="mailto:prajwalr206@email.com">
-  <button>Contact Me</button>
-</a>
-        
-        </div>
-    </section>
+            if (task === "") return;
+
+            let li = document.createElement("li");
+            li.innerText = task;
+
+            let btn = document.createElement("button");
+            btn.innerText = "Delete";
+            btn.onclick = function () {
+                li.remove();
+            };
+
+            li.appendChild(btn);
+            document.getElementById("taskList").appendChild(li);
+
+            input.value = "";
+        }
+    </script>
 
 </body>
 
 </html>
-<h2 id="projects">Projects</h2>
-
-<div>
-  <h3>My Portfolio Website</h3>
-  <p>Ye website maine HTML aur CSS se banayi hai.</p>
-</div>
-
-<a href="#projects">Projects</a>
-
-<p>
-I am Prajwal, a beginner web developer learning HTML and CSS.
-I enjoy building websites and improving my skills daily.
-</p>
-
-h2 {
-  color: #222;
-  margin-top: 40px;
-}
-
-div {
-  background: white;
-  padding: 15px;
-  margin: 10px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px lightgray;
-}
-
-img {
-  border-radius: 50%;
-  border: 4px solid #333;
-  padding: 5px;
-  margin-top: 20px;
-}
-
-<img src="photo.jpg" width="150" style="border-radius:50%; border:4px solid black;">
